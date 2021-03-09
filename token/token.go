@@ -44,6 +44,10 @@ const (
 	FALSE    = "FALSE"
 	IF       = "IF"
 	ELSE     = "ELSE"
+
+	// EQ, NOT EQUAL
+	EQ     = "=="
+	NOT_EQ = "!="
 )
 
 var keywords = map[string]TokenType{
