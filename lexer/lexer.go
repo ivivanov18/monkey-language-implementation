@@ -45,8 +45,8 @@ func (l *Lexer) NextToken() token.Token {
 		if (l.peekChar() == '=') {
 			ch := l.ch
 			l.readChar()
-			litteral := string(ch) + string(l.ch)
-			tok = token.Token{Type: token.EQ, Litteral: litteral}
+			literal := string(ch) + string(l.ch)
+			tok = token.Token{Type: token.EQ, Literal: literal}
 		} else {
 			tok = newToken(token.ASSIGN, l.ch)
 		}
@@ -56,8 +56,8 @@ func (l *Lexer) NextToken() token.Token {
 		if (l.peekChar() == '=') {
 			ch := l.ch
 			l.readChar()
-			litteral := string(ch) + string(l.ch)
-			tok = token.Token{Type: token.NOT_EQ, Litteral: litteral}
+			literal := string(ch) + string(l.ch)
+			tok = token.Token{Type: token.NOT_EQ, Literal: literal}
 		} else {
 			tok = newToken(token.BANG, l.ch)
 		}
@@ -84,16 +84,16 @@ func (l *Lexer) NextToken() token.Token {
 	case '}':
 		tok = newToken(token.RBRACE, l.ch)
 	case 0:
-		tok.Litteral = ""
+		tok.Literal = ""
 		tok.Type = token.EOF
 	default:
 		if isLetter(l.ch) {
-			tok.Litteral = l.readIdentifier()
-			tok.Type = token.LookupIdent(tok.Litteral)
+			tok.Literal = l.readIdentifier()
+			tok.Type = token.LookupIdent(tok.Literal)
 			return tok
 		} else if isDigit(l.ch) {
 			tok.Type = token.INT
-			tok.Litteral = l.readNumber()
+			tok.Literal = l.readNumber()
 			return tok
 		} else {
 			tok = newToken(token.ILLEGAL, l.ch)
@@ -126,7 +126,7 @@ func (l *Lexer) skipWhitespace() {
 }
 
 func newToken(tokenType token.TokenType, ch byte) token.Token {
-	return token.Token{Type: tokenType, Litteral: string(ch)}
+	return token.Token{Type: tokenType, Literal: string(ch)}
 }
 
 func isLetter(ch byte) bool {

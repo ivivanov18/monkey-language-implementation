@@ -10,7 +10,7 @@ func TestNextToken(t *testing.T) {
 
 	tests := []struct {
 		expectedType token.TokenType
-		expectedLitteral string
+		expectedLiteral string
 	} {
 		{token.ASSIGN, "="},
 		{token.PLUS, "+"},
@@ -32,8 +32,8 @@ func TestNextToken(t *testing.T) {
 			t.Fatalf("tests[%d] - tokentype wrong. expected=%q, got=%q", i, tt.expectedType, tok.Type)
 		}
 
-		if tok.Litteral != tt.expectedLitteral {
-			t.Fatalf("tests[%d] - litteral wrong. expected=%q, got=%q", i, tt.expectedLitteral, tok.Litteral)
+		if tok.Literal != tt.expectedLiteral {
+			t.Fatalf("tests[%d] - literal wrong. expected=%q, got=%q", i, tt.expectedLiteral, tok.Literal)
 		}
 	}
 }
@@ -144,8 +144,8 @@ func TestNextTokenCode(t *testing.T) {
 			t.Fatalf("tests[%d] - tokentype wrong. expected=%q, got=%q", i, tt.expectedType, tok.Type)
 		}
 
-		if tok.Litteral != tt.expectedLiterral {
-			t.Fatalf("tests[%d] - litteral wrong. expected=%q, got=%q", i, tt.expectedLiterral, tok.Litteral)
+		if tok.Literal != tt.expectedLiterral {
+			t.Fatalf("tests[%d] - literal wrong. expected=%q, got=%q", i, tt.expectedLiterral, tok.Literal)
 		}
 	}
 }
